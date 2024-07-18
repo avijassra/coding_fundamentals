@@ -8,6 +8,8 @@ Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping 
 import { ISorting } from "../interfaces";
 
 export class BubbleSort implements ISorting {
+    description: string = 'Bubble Sort';
+
     sort = (arr: number[]): number[] => {
         // sort the array in ascending order
         return this._sortData(arr, true);
