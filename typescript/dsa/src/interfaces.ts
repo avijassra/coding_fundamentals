@@ -1,4 +1,4 @@
-export interface ISorting {
+export interface ISorter {
     description: string;
 
     sort(arr: number[]): number[];

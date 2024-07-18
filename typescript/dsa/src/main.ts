@@ -1,5 +1,5 @@
-import { ISorting } from "./interfaces";
-import { BubbleSort } from "./sorting/01-bubble-sort";
+import { ISorter } from "./interfaces";
+import { SortingFactory as SorterFactory } from "./sorter.factory";
 import * as readline from 'readline';
 
 
@@ -10,6 +10,8 @@ import * as readline from 'readline';
 
 export class Main {
     constructor() {
+        const factory = new SorterFactory();
+
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
@@ -20,7 +22,7 @@ export class Main {
 
         const question1 = () => {
             return new Promise<void>((resolve, reject) => {
-                rl.question('1. Enter the sorting type (bubble/selection/insertion/merge/quick): ', (answer) => {
+                rl.question(`1. ${factory.getSortingQuestion} `, (answer) => {
                     sortType = answer.toLowerCase();
                     resolve()
                 })
@@ -40,7 +42,7 @@ export class Main {
             await question1()
             await question2()
 
-            this.runSorting(sortType, sortDir);
+            this.runSorting(factory.getSorter(sortType), sortDir);
 
             rl.close()
         }
@@ -48,11 +50,10 @@ export class Main {
         questions();
     }
 
-    runSorting(sortType: string, sortDirection: string): void {
+    runSorting(sorter: ISorter, sortDirection: string): void {
         const srcArr = [34, 22, 54, 65, 21, 23, 43, 32, 12, 11, 2, 5, 3, 12, 62, 43, 54, 65, 76, 87, 98, 89, 78, 67, 56, 45, 34, 23, 12, 11, 10, 9, 7, 1, 4, 8, 2];
         console.log(`Before sorting: ${srcArr}`);
 
-        const sorter: ISorting = this.resolveSortType(sortType || '');
         let sortedArr!: number[];
 
         if (sortDirection === 'asc') {
@@ -61,25 +62,7 @@ export class Main {
             sortedArr = sorter.reverseSort(srcArr);
         }
 
-        console.log(`After sorting (${sortDirection}): ${sortedArr}`);
-    }
-
-    resolveSortType(sortType: string): ISorting {
-        let sorter: ISorting;
-
-        switch (sortType) {
-            case "bubble":
-                sorter = new BubbleSort();
-                break;
-
-            default:
-                sorter = new BubbleSort();
-                break;
-        }
-
-        console.log(`Sorting type: ${sorter.description}`);
-
-        return sorter;
+        console.log(`After using (${sortDirection}) to sort: ${sortedArr}`);
     }
 }
 

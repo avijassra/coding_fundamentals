@@ -5,9 +5,9 @@ Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping 
 -- time complexity: O(n^2)
 -- space complexity: O(1)
 **************************************************** */
-import { ISorting } from "../interfaces";
+import { ISorter } from "../interfaces";
 
-export class BubbleSort implements ISorting {
+export class BubbleSort implements ISorter {
     description: string = 'Bubble Sort';
 
     sort = (arr: number[]): number[] => {
