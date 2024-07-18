@@ -1,24 +1,51 @@
-// tsc 01-bubble-sort.ts && node 01-bubble-sort.js
+/* ****************************************************
+**************** Bubble Sort ****************
+Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+*******************************************************
+-- time complexity: O(n^2)
+-- space complexity: O(1)
+**************************************************** */
+import { ISorting } from "../interfaces";
 
-const srcArr = [34, 22, 54, 65, 21, 23, 43, 32, 12, 11, 2, 5, 3, 12, 62, 43, 54, 65, 76, 87, 98, 89, 78, 67, 56, 45, 34, 23, 12, 11, 10, 9, 7, 1, 4, 8, 2];
-console.log(`Before sorting: ${srcArr}`);
+export class BubbleSort implements ISorting {
+    sort = (arr: number[]): number[] => {
+        // sort the array in ascending order
+        return this._sortData(arr, true);
+    };
 
-const bubbleSort = (arr: number[]): number[] => {
-  const len = arr.length;
-  let hasSwapped: boolean = true;
-  for (let i = 0; i < len || hasSwapped; i++) {
-    hasSwapped = false;
-    for (let j = 0; j < len - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        const temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        hasSwapped = true;
-      }
+    reverseSort(arr: number[]): number[] {
+        // sort the array in descending order
+        return this._sortData(arr, false);
     }
-  }
-  return arr;
-};
 
-const sortedArr = bubbleSort(srcArr);
-console.log(`After sorting: ${sortedArr}`);
+    private _sortData = (arr: number[], sortAsc: boolean): number[] => {
+        // get the length of the array
+        const len = arr?.length || 0;
+
+        // check if the array is not empty
+        if (len > 0) {
+            // check if the array is empty or has only one element
+            let hasSwapped: boolean = true;
+            // loop through the array
+            for (let i = 0; i < len || hasSwapped; i++) {
+                // set the flag to false
+                hasSwapped = false;
+                // loop through the array
+                for (let j = 0; j < len - i - 1; j++) {
+                    // check if the adjacent elements are in wrong order
+                    if ((arr[j] > arr[j + 1] && sortAsc) || (arr[j] < arr[j + 1] && !sortAsc)) {
+                        // swap the elements
+                        const temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        // set the flag to true
+                        hasSwapped = true;
+                    }
+                }
+            }
+        }
+
+        // return the sorted array
+        return arr;
+    }
+}
