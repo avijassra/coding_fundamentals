@@ -52,7 +52,7 @@ export class Main {
 
     runSorting(sorter: ISorter, sortDirection: string): void {
         const srcArr = [34, 22, 54, 65, 21, 23, 43, 32, 12, 11, 2, 5, 3, 12, 62, 43, 54, 65, 76, 87, 98, 89, 78, 67, 56, 45, 34, 23, 12, 11, 10, 9, 7, 1, 4, 8, 2];
-        console.log(`Before sorting: ${srcArr}`);
+        console.log(`Before sorting: ${srcArr} | length: ${srcArr.length}`);
 
         let sortedArr!: number[];
 
@@ -62,7 +62,7 @@ export class Main {
             sortedArr = sorter.reverseSort(srcArr);
         }
 
-        console.log(`After using (${sortDirection}) to sort: ${sortedArr}`);
+        console.log(`After using (${sorter.description} for ${sortDirection} order) to sort: ${sortedArr} | length: ${sortedArr.length}`);
     }
 }
 
