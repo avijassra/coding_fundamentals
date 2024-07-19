@@ -6,21 +6,12 @@ Selection Sort is a simple sorting algorithm that builds the final sorted array 
 -- space complexity: O(1)
 **************************************************** */
 import { ISorter } from "../interfaces";
+import { SortBase } from "./sort-base";
 
-export class SelectionSort implements ISorter {
+export class SelectionSort extends SortBase implements ISorter {
     description: string = 'Selection Sort';
 
-    sort = (arr: number[]): number[] => {
-        // sort the array in ascending order
-        return this._sortData(arr, true);
-    };
-
-    reverseSort(arr: number[]): number[] {
-        // sort the array in descending order
-        return this._sortData(arr, false);
-    }
-
-    private _sortData = (arr: number[], sortAsc: boolean): number[] => {
+    protected _sortData = (arr: number[], sortAsc: boolean): number[] => {
         // get the length of the array
         const len = arr?.length || 0;
         // check if the array is not empty
@@ -39,7 +30,7 @@ export class SelectionSort implements ISorter {
         return arr;
     }
     
-    private _findMinMaxIndex = (arr: number[], startIndex: number, endIndex: number, sortAsc: boolean): number => {
+    protected _findMinMaxIndex = (arr: number[], startIndex: number, endIndex: number, sortAsc: boolean): number => {
         let minIndex = startIndex;
         // loop through the array
         for (let j = startIndex + 1; j < endIndex; j++) {

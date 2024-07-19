@@ -6,21 +6,12 @@ Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping 
 -- space complexity: O(1)
 **************************************************** */
 import { ISorter } from "../interfaces";
+import { SortBase } from "./sort-base";
 
-export class BubbleSort implements ISorter {
+export class BubbleSort extends SortBase implements ISorter {
     description: string = 'Bubble Sort';
 
-    sort = (arr: number[]): number[] => {
-        // sort the array in ascending order
-        return this._sortData(arr, true);
-    };
-
-    reverseSort(arr: number[]): number[] {
-        // sort the array in descending order
-        return this._sortData(arr, false);
-    }
-
-    private _sortData = (arr: number[], sortAsc: boolean): number[] => {
+    protected _sortData = (arr: number[], sortAsc: boolean): number[] => {
         // get the length of the array
         const len = arr?.length || 0;
 
