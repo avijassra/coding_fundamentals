@@ -27,24 +27,28 @@ export class SelectionSort implements ISorter {
         if (len > 0) {
             // loop through the array
             for (let i = 0; i < len; i++) {
-                let minIndex = i;
-                // loop through the array
-                for (let j = i + 1; j < len; j++) {
-                    // check if the adjacent elements are in wrong order
-                    if ((arr[minIndex] > arr[j] && sortAsc) || (arr[minIndex] < arr[j] && !sortAsc)) {
-                        // swap the elements
-                        minIndex = j;
-                    }
-                }
-
+                let minIndex = this._findMinMaxIndex(arr, i, len, sortAsc);
                 if (minIndex !== i) {
                     // swap the elements
                     [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
                 }
             }
         }
-
+    
         // return the sorted array
         return arr;
+    }
+    
+    private _findMinMaxIndex = (arr: number[], startIndex: number, endIndex: number, sortAsc: boolean): number => {
+        let minIndex = startIndex;
+        // loop through the array
+        for (let j = startIndex + 1; j < endIndex; j++) {
+            // check if the adjacent elements are in wrong order
+            if ((arr[minIndex] > arr[j] && sortAsc) || (arr[minIndex] < arr[j] && !sortAsc)) {
+                // update the minIndex
+                minIndex = j;
+            }
+        }
+        return minIndex;
     }
 }
