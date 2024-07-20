@@ -18,28 +18,17 @@ export class InsertionSort extends SortBase implements ISorter {
         if (len > 0) {
             // loop through the array
             for (let i = 0; i < len; i++) {
-                let minIndex = this._findMinMaxIndex(arr, i, len, sortAsc);
-                if (minIndex !== i) {
-                    // swap the elements
-                    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+                for(let j = i + 1; j > 0; j--) {
+                    if((arr[j] < arr[j-1] && sortAsc) || (arr[j] > arr[j-1] && !sortAsc)) {
+                        [arr[j-1], arr[j]] = [arr[j], arr[j-1]];
+                    } else {
+                        break;
+                    }
                 }
             }
         }
     
         // return the sorted array
         return arr;
-    }
-    
-    protected _findMinMaxIndex = (arr: number[], startIndex: number, endIndex: number, sortAsc: boolean): number => {
-        let minIndex = startIndex;
-        // loop through the array
-        for (let j = startIndex + 1; j < endIndex; j++) {
-            // check if the adjacent elements are in wrong order
-            if ((arr[minIndex] > arr[j] && sortAsc) || (arr[minIndex] < arr[j] && !sortAsc)) {
-                // update the minIndex
-                minIndex = j;
-            }
-        }
-        return minIndex;
     }
 }
