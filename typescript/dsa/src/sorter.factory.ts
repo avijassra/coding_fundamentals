@@ -2,6 +2,7 @@ import { ISorter } from "./interfaces";
 import { BubbleSort } from "./sorting/01-bubble-sort";
 import { SelectionSort } from "./sorting/02-selection-sort";
 import { InsertionSort } from "./sorting/03-insertion-sort";
+import { MergeSort } from "./sorting/04-merge-sort";
 
 export class SortingFactory {
     getSortingQuestion: string = '1. Enter the sorting type (bubble/selection/insertion/merge/quick): ';
@@ -18,9 +19,9 @@ export class SortingFactory {
             case 'insertion':
                 sorter = new InsertionSort();
                 break;
-            // case 'merge':
-            //     sorter = new MergeSort();
-            //     break;
+            case 'merge':
+                sorter = new MergeSort();
+                break;
             // case 'quick':
             //     sorter = new QuickSort();
             //     break;
