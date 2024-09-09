@@ -4,9 +4,10 @@ import { SelectionSort } from "./sorting/02-selection-sort";
 import { InsertionSort } from "./sorting/03-insertion-sort";
 import { MergeSort } from "./sorting/04-merge-sort";
 import { QuickSort } from "./sorting/05-quick-sort";
+import { BucketSort } from "./sorting/06-bucket-sort";
 
 export class SortingFactory {
-    getSortingQuestion: string = '1. Enter the sorting type (bubble/selection/insertion/merge/quick): ';
+    getSortingQuestion: string = '1. Enter the sorting type (bubble/selection/insertion/merge/quick/bucket): ';
 
     getSorter(sortType: string): ISorter {
         let sorter: ISorter;
@@ -25,6 +26,9 @@ export class SortingFactory {
                 break;
             case 'quick':
                 sorter = new QuickSort();
+                break;
+            case 'bucket':
+                sorter = new BucketSort();
                 break;
             default:
                 sorter = new BubbleSort();
