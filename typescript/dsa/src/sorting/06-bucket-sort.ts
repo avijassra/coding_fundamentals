@@ -4,7 +4,8 @@ Bucket sort is a sorting algorithm that works by distributing the elements of an
 Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm.
 *******************************************************
 -- time complexity: O(n)
--- space complexity: 1
+-- space complexity: O(1)
+-- stable: No
 **************************************************** */
 import { ISorter } from "../interfaces";
 import { SortBase } from "./sort-base";

@@ -4,6 +4,7 @@ Insertion Sort is a simple sorting algorithm that works similar to the way you s
 *******************************************************
 -- time complexity: O(n^2)
 -- space complexity: O(1)
+-- stable: Yes
 **************************************************** */
 import { ISorter } from "../interfaces";
 import { SortBase } from "./sort-base";

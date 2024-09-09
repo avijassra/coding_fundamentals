@@ -4,6 +4,7 @@ Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping 
 *******************************************************
 -- time complexity: O(n^2)
 -- space complexity: O(1)
+-- stable: Yes
 **************************************************** */
 import { ISorter } from "../interfaces";
 import { SortBase } from "./sort-base";

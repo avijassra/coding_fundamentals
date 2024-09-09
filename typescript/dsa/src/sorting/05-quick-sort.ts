@@ -4,6 +4,7 @@ Quick sort is a divide and conquer algorithm. It works by selecting a 'pivot' el
 *******************************************************
 -- time complexity: O(n log n)
 -- space complexity: O(log n)
+-- stable: No
 **************************************************** */
 import { ISorter } from "../interfaces";
 import { SortBase } from "./sort-base";

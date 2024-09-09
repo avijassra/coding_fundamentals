@@ -4,6 +4,7 @@ Selection Sort is a simple sorting algorithm that builds the final sorted array 
 *******************************************************
 -- time complexity: O(n^2)
 -- space complexity: O(1)
+-- stable: No
 **************************************************** */
 import { ISorter } from "../interfaces";
 import { SortBase } from "./sort-base";

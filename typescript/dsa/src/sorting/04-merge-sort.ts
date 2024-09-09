@@ -4,6 +4,7 @@ Merge Sort is a Divide and Conquer algorithm. It divides the input array into tw
 *******************************************************
 -- time complexity: O(n log n)
 -- space complexity: O(n) 
+-- stable: Yes
 **************************************************** */
 import { ISorter } from "../interfaces";
 import { SortBase } from "./sort-base";
