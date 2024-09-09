@@ -1,5 +1,5 @@
 /* ****************************************************
-**************** Selection Sort ****************
+******************** Selection Sort *******************
 Selection Sort is a simple sorting algorithm that builds the final sorted array one item at a time.
 *******************************************************
 -- time complexity: O(n^2)
